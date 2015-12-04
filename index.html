@@ -1,110 +1,106 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Hspackdust by hspackdust</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Hspackdust</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/hspackdust/hspackdust" class="btn">View on GitHub</a>
-      <a href="https://github.com/hspackdust/hspackdust/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/hspackdust/hspackdust/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <p>&lt;!DOCTYPE html&gt;
-
-</p>
-    Hearthstone Pack Dust Tool
-    
-    
-    
-    
-    
-    
-
-
-    <h1>
-<a id="hearthstone-pack-dust-tool" class="anchor" href="#hearthstone-pack-dust-tool" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hearthstone Pack Dust Tool</h1>
-    <div>
-        <div></div>
-        <div>
-            Number of Packs
-            <div>
-                
+<html>
+<head>
+    <title>Hearthstone Pack Dust Tool</title>
+    <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 class="text-center">Hearthstone Pack Dust Tool</h1>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <label class="col-sm-2 control-label">Number of Packs</label>
+            <div class="col-sm-10">
+                <input id="txtNumberOfPacks" type="text" class="form-control">
             </div>
-            Common
-            <div>
-                
+            <label class="col-sm-2 control-label">Common</label>
+            <div class="col-sm-10">
+                <input id="txtCommon" type="text" class="form-control">
             </div>
-            Rare
-            <div>
-                
+            <label class="col-sm-2 control-label">Rare</label>
+            <div class="col-sm-10">
+                <input id="txtRare" type="text" class="form-control">
             </div>
-            Epic
-            <div>
-                
+            <label class="col-sm-2 control-label">Epic</label>
+            <div class="col-sm-10">
+                <input id="txtEpic" type="text" class="form-control">
             </div>
-            Legendary
-            <div>
-                
+            <label class="col-sm-2 control-label">Legendary</label>
+            <div class="col-sm-10">
+                <input id="txtLegendary" type="text" class="form-control">
             </div>
-            Golden Common
-            <div>
-                
+            <label class="col-sm-2 control-label">Golden Common</label>
+            <div class="col-sm-10">
+                <input id="txtGoldenCommon" type="text" class="form-control">
             </div>
-            Golden Rare
-            <div>
-                
+            <label class="col-sm-2 control-label">Golden Rare</label>
+            <div class="col-sm-10">
+                <input id="txtGoldenRare" type="text" class="form-control">
             </div>
-            Golden Epic
-            <div>
-                
+            <label class="col-sm-2 control-label">Golden Epic</label>
+            <div class="col-sm-10">
+                <input id="txtGoldenEpic" type="text" class="form-control">
             </div>
-            Golden Legendary
-            <div>
-                
+            <label class="col-sm-2 control-label">Golden Legendary</label>
+            <div class="col-sm-10">
+                <input id="txtGoldenLegendary" type="text" class="form-control">
             </div>
-            Total Dust
-            <div>
-                 
+            <label class="col-sm-2 control-label">Total Dust</label>
+            <div class="col-sm-10">
+                <span id="spanTotalDust" type="text" class="form-control"> </span>
             </div>
-            Dust Per Pack (Normally 109)
-            <div>
-                 
+            <label class="col-sm-2 control-label">Dust Per Pack (Normally 109)</label>
+            <div class="col-sm-10">
+                <span id="spanDustPerPack" type="text" class="form-control"> </span>
             </div>
-            
-            <div>
-                
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input id="btnCalc" type="button" class="btn btn-primary" value="Calculate" onclick="Calc()" />
             </div>
         </div>
-        <div>
+        <div class="col-md-2">
         </div>
     </div>
-    <h1></h1>
-    
+    <h1 class="text-center"><span id="spanLuck"></span></h1>
+    <script>
+        function Calc() {
+            txtDefaultValue();
+            var numberOfPacks = parseInt($("#txtNumberOfPacks").val());
+            var common = parseInt($("#txtCommon").val());
+            var rare = parseInt($("#txtRare").val());
+            var epic = parseInt($("#txtEpic").val());
+            var legendary = parseInt($("#txtLegendary").val());
+            var gcommon = parseInt($("#txtGoldenCommon").val());
+            var grare = parseInt($("#txtGoldenRare").val());
+            var gepic = parseInt($("#txtGoldenEpic").val());
+            var glegendary = parseInt($("#txtGoldenLegendary").val());
+            var totalDust = common * 5 + rare * 20 + epic * 100 + legendary * 400 + gcommon * 50 + grare * 100 + gepic * 400 + glegendary * 1600;
+            var dustPerPack = totalDust / numberOfPacks;
+            if (dustPerPack < 109) { $("#spanLuck").html('<div class="alert alert-danger" role="alert"> <strong>NOT LUCKY</strong> You have less than 109 dust per pack. (' + dustPerPack + ' )</div>'); }
+            if (dustPerPack >= 109) { $("#spanLuck").html('<div class="alert alert-success" role="alert"> <strong>LUCKY</strong> You have more than 109 dust per pack. (' + dustPerPack + ' )</div>'); }
+            $("#spanTotalDust").html(totalDust);
+            $("#spanDustPerPack").html(dustPerPack);
+        }
+        function txtDefaultValue() {
+            if ($("#txtNumberOfPacks").val() == "") { $("#txtNumberOfPacks").val("0"); }
+            if ($("#txtCommon").val() == "") { $("#txtCommon").val("0"); }
+            if ($("#txtRare").val() == "") { $("#txtRare").val("0"); }
+            if ($("#txtEpic").val() == "") { $("#txtEpic").val("0"); }
+            if ($("#txtLegendary").val() == "") { $("#txtLegendary").val("0"); }
+            if ($("#txtGoldenCommon").val() == "") { $("#txtGoldenCommon").val("0"); }
+            if ($("#txtGoldenRare").val() == "") { $("#txtGoldenRare").val("0"); }
+            if ($("#txtGoldenEpic").val() == "") { $("#txtGoldenEpic").val("0"); }
+            if ($("#txtGoldenLegendary").val() == "") { $("#txtGoldenLegendary").val("0"); }
+        }
+    </script>
     <a href="http://xyz.freelogs.com/stats/m/mskdlwsn/" target="_top">
-        <img border="0" src="http://xyz.freelogs.com/counter/index.php?u=mskdlwsn&amp;s=7seg" align="middle" hspace="4" vspace="2">
+        <img border="0" src="http://xyz.freelogs.com/counter/index.php?u=mskdlwsn&s=7seg" ALIGN="middle" HSPACE="4" VSPACE="2">
     </a>
-     
-
-
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/hspackdust/hspackdust">Hspackdust</a> is maintained by <a href="https://github.com/hspackdust">hspackdust</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+    <script src="http://xyz.freelogs.com/counter/script.php?u=mskdlwsn"></script> 
+</body>
 </html>
